@@ -1,0 +1,6 @@
+pylint
+pytest
+black
+
+pandas == 1.2.4
+squareup == 16.0.0.20211117
