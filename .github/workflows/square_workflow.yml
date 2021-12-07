@@ -1,4 +1,4 @@
-name: github-actions-with-aws-sam square_workflow
+name: sam-square-github-actions square_workflow
 
 on: [push]
 
