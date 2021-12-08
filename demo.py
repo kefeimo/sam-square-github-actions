@@ -3,7 +3,7 @@ from squareup.square_utils import (
     SquareCatalogUtils,
     SquareTransactionUtils,
 )
-from tests.data import DfItemLib, ListPlan
+from tests.data_demo import DfItemLib, ListPlan
 import json
 
 
@@ -40,7 +40,7 @@ def create_transaction_test() -> "transaction_info_list":
 if __name__ == "__main__":
 
     # demo 1
-    print("demo 1: init_square_item_library")
+    print("====demo 1: init_square_item_library====")
     df_lib = init_square_item_library(df_item_lib=DfItemLib.df_item_lib)
     # print("item library", df_lib)
     # Pretty Print JSON
@@ -50,12 +50,12 @@ if __name__ == "__main__":
     print("item library", json_formatted_str)
 
     # demo 2
-    print("demo 2: create_transaction")
+    print("====demo 2: create_transaction====")
     results = create_transaction()
     print("create_transaction result", results)
 
     # demo 3
-    print("demo 3: create_transaction_test")
+    print("====demo 3: create_transaction_test====")
     results = create_transaction_test()
     print("create_transaction_test result", results)
     result_body = [obj.body for obj in results]
