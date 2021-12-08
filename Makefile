@@ -1,6 +1,7 @@
 install:
 	pip install --upgrade pip &&\
-		pip install -r requirements.txt
+		pip install -r squareup/requirements.txt &&\
+		pip install -r tests/requirements.txt
 
 test:  # require environment variable SQUARE_TOKEN_TEST='XXXX', ex: SQUARE_TOKEN_TEST='XXXX' make test
 	# python -m pytest -vv test_hello.py

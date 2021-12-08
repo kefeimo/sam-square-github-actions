@@ -1,3 +1,5 @@
 .git/
 .pytest_cache/
 tests/__pycache__/
+squareup/__pycache__/
+*/__pycache__/
