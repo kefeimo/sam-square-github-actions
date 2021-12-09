@@ -7,7 +7,7 @@ import uuid
 
 import itertools
 
-from config import *
+from squareup.config import *
 
 
 class _SquareClientFactory:

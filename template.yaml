@@ -11,6 +11,7 @@ Globals:
     MemorySize: 5120
     Timeout: 300
 
+
 Resources:
   SamSquareGithubActionsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -29,7 +30,12 @@ Resources:
             
       Environment:
         Variables:
-          SQUARE_TOKEN_TEST: XXXXX  # warning: don't expose this!!!
+          SQUARE_TOKEN_TEST: !Ref SquareTokenTestRef  # warning: don't expose this!!!
+          
+Parameters: # This is the place to put environment variables (i.e., parameters). Use `--parameter-overrides SquareTokenTestRef=XXXX` to override
+  SquareTokenTestRef:
+    Type: String
+    Default: xx
 
 # Outputs:
 #   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

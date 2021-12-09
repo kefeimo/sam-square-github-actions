@@ -47,8 +47,8 @@ def lambda_handler(event, context):
     # Pretty Print JSON
     json_data = df_lib.to_json()
     obj = json.loads(json_data)
-    json_formatted_str = json.dumps(obj, indent=2)
-    print("item library", json_formatted_str)
+    item_lib_json_str = json.dumps(obj, indent=2)
+    print("item library", item_lib_json_str)
 
     # demo 2
     print("====demo 2: create_transaction====")
@@ -72,6 +72,7 @@ def lambda_handler(event, context):
     #         # "location": ip.text.replace("\n", "")
     #     }),
     # }
+    json_formatted_str = item_lib_json_str + "\n" + f"Success. Finished at {time_now}"
     return {
         "statusCode": 200,
         "body": json_formatted_str
