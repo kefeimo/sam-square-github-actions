@@ -1,0 +1,34 @@
+name: sam-square-github-actions CD workflow
+# sam-square-github-actions sam-build-deploy CD workflow
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: aws-actions/setup-sam@v1
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+      - name: Install dependencies
+        run: |
+          make install
+      # sam build 
+      - run: sam build --use-container
+
+# Run Unit tests- Specify unit tests here 
+
+# sam deploy
+      - run: >
+          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset 
+          --stack-name sam-square-github-actions --resolve-s3 --capabilities CAPABILITY_IAM 
+          --parameter-overrides SquareTokenTestRef=${{ secrets.SQUARE_TOKEN_TEST }} --region us-east-2
