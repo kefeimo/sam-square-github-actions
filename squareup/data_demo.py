@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import datetime
-from squareup.square_utils import SquareClient, SquareCatalogUtils
+from square_utils import SquareClient, SquareCatalogUtils
 
 
 class DfItemLib:

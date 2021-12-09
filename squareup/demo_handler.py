@@ -5,6 +5,7 @@ from square_utils import (
 )
 from data_demo import DfItemLib, ListPlan
 import json
+from datetime import datetime
 
 
 def init_square_item_library(df_item_lib) -> "Dataframe":
@@ -37,7 +38,7 @@ def create_transaction_test() -> "transaction_info_list":
 
 
 # Press the green button in the gutter to run the script.
-if __name__ == "__main__":
+def lambda_handler(event, context):
 
     # demo 1
     print("====demo 1: init_square_item_library====")
@@ -62,3 +63,16 @@ if __name__ == "__main__":
     print("create_transaction_test result_body", result_body)
     result_is_success = [obj.is_success() for obj in results]
     print("create_transaction_test status", result_is_success)
+
+    time_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # return {
+    #     "statusCode": 200,
+    #     "body": json.dumps({
+    #         "message": f"Success. Finished at {time_now}",
+    #         # "location": ip.text.replace("\n", "")
+    #     }),
+    # }
+    return {
+        "statusCode": 200,
+        "body": json_formatted_str
+    }
