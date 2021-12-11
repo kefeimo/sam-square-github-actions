@@ -5,7 +5,7 @@ Recommend: run this set of tests alone.
 
 import unittest
 from squareup.square_utils import SquareClient, SquareCatalogUtils, SquareTransactionUtils
-from tests.data import DfItemLib, ListPlan
+from tests.data_test import DfItemLib, ListPlan
 
 
 class TestSquareCatalogUtils(unittest.TestCase):
