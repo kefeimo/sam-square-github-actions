@@ -1,24 +1,25 @@
 import pandas as pd
 from datetime import datetime
-from squareup.square_utils import SquareClient, SquareCatalogUtils
+from squareup_api.square_utils import SquareClient, SquareCatalogUtils
 
 
 class DfItemLib:
     """
     item library template in Pandas dataframe
     """
+    time_now: str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     df_item_lib = pd.DataFrame({
         "item_header": ["item_header_test", "item_header_test_2"] * 2,
         "variation_id": ["XXX"] * 4,
-        "variation_name": ["variation_name_test", "variation_name_test_2",
-                           "variation_name_test_3", "variation_name_test_4"],
+        "variation_name": [f"var1_created_at_{time_now}", f"var2_created_at_{time_now}",
+                           f"var3_created_at_{time_now}", f"var4_created_at_{time_now}"],
         "item_id": ["XXX"] * 4,
-        "item_name": ["item_name_test", "item_name_test_2"] * 2,
+        "item_name": [f"itm1_created_at_{time_now}", f"itm2_created_at_{time_now}"] * 2,
         "category_id": ["XXX"] * 4,
-        "category_name": ["category_name_test", "category_name_test_2"] * 2,
-        "variation_amount": ["100", "101"] * 2,
+        "category_name": [f"itm1_created_at_{time_now}", f"itm2_created_at_{time_now}"] * 2,
+        "variation_amount": ["101", "202", "303", "404"],
         "variation_currency": ["USD"] * 4,
-        "item_description": [f"test item, created at {datetime.now()}"] * 4,
+        "item_description": [f"test item, created at {time_now}"] * 4,
         "variation_id_inner": ["#XXXX#"] * 4
     })
 
@@ -39,7 +40,7 @@ class ListPlan:
 
         # transaction_plan (hard coded for testing)
         plan_as_dict_test = {'2020-10-10 7:00:00':
-                        [(302,[variation_ids[0], variation_ids[3], variation_ids[3]]),
-                         (201,[variation_ids[2], variation_ids[1]]),
-                         (402,[variation_ids[1], variation_ids[1],variation_ids[2], variation_ids[0]])]}
+                        [("?",[variation_ids[0], variation_ids[3], variation_ids[3]]),
+                         ("?",[variation_ids[2], variation_ids[1]]),
+                         ("?",[variation_ids[1], variation_ids[1],variation_ids[2], variation_ids[0]])]}
         self.plan_as_dict_test = plan_as_dict_test

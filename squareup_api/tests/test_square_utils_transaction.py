@@ -1,5 +1,5 @@
 import unittest
-from squareup.square_utils import SquareClient, SquareCatalogUtils, SquareTransactionUtils
+from squareup_api.square_utils import SquareClient, SquareCatalogUtils, SquareTransactionUtils
 from tests.data_test import DfItemLib, ListPlan
 
 

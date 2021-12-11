@@ -1,11 +1,6 @@
-from square_utils import (
-    SquareClient,
-    SquareCatalogUtils,
-    SquareTransactionUtils,
-)
+from squareup_api.square_utils import SquareClient, SquareCatalogUtils, SquareTransactionUtils
 from data_demo import DfItemLib, ListPlan
 import json
-from datetime import datetime
 
 
 def init_square_item_library(df_item_lib) -> "Dataframe":
@@ -38,7 +33,7 @@ def create_transaction_test() -> "transaction_info_list":
 
 
 # Press the green button in the gutter to run the script.
-def lambda_handler(event, context):
+if __name__ == "__main__":
 
     # demo 1
     print("====demo 1: init_square_item_library====")
@@ -47,8 +42,8 @@ def lambda_handler(event, context):
     # Pretty Print JSON
     json_data = df_lib.to_json()
     obj = json.loads(json_data)
-    item_lib_json_str = json.dumps(obj, indent=2)
-    print("item library", item_lib_json_str)
+    json_formatted_str = json.dumps(obj, indent=2)
+    print("item library", json_formatted_str)
 
     # demo 2
     print("====demo 2: create_transaction====")
@@ -63,17 +58,3 @@ def lambda_handler(event, context):
     print("create_transaction_test result_body", result_body)
     result_is_success = [obj.is_success() for obj in results]
     print("create_transaction_test status", result_is_success)
-
-    time_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    # return {
-    #     "statusCode": 200,
-    #     "body": json.dumps({
-    #         "message": f"Success. Finished at {time_now}",
-    #         # "location": ip.text.replace("\n", "")
-    #     }),
-    # }
-    json_formatted_str = item_lib_json_str + "\n" + f"Success. Finished at {time_now}"
-    return {
-        "statusCode": 200,
-        "body": json_formatted_str
-    }
